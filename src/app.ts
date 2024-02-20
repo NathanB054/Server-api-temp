@@ -38,6 +38,6 @@ app.use(authroute);
 
 // app.use(errorHandler);
 
-app.listen( 7777 , () => {
+app.listen( process.env.PORT || 7777 , () => {
     console.log("Server is rocking at 7777");
 })
