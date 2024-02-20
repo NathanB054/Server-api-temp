@@ -38,6 +38,6 @@ app.use(authroute);
 
 // app.use(errorHandler);
 
-app.listen( 8080 , () => {
-    console.log("Server is rocking at 8080");
+app.listen( 7777 , () => {
+    console.log("Server is rocking at 7777");
 })
