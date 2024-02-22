@@ -13,7 +13,7 @@ router.post("/add", async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Title and description are required." });
     }
     // Create a new Todo instance using the validated data
-    const newTodo = new Todo({ title, description  });
+    const newTodo = new Todo({ title, description });
     // Save the new Todo to the database
     await newTodo.save();
     // Respond with success and the created Todo
