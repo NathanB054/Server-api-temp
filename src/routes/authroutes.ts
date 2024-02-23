@@ -8,7 +8,7 @@ const authroute = express.Router();
 
 authroute.post("/signup", async (req, res) => {
     try {
-      const { studentid, email, password } = req.body;
+      const { id,studentid, email, password,token } = req.body;
   
       const existingUser = await User.findOne({ email });
       if (existingUser) {
