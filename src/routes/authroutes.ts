@@ -32,11 +32,11 @@ authroute.post("/signup", async (req, res) => {
 
 authroute.post("/signin", async (req, res) => {
     try {
-        const {email,password}= req.body;
-        const user = await User.findOne({email});
+        const {studentid,password}= req.body;
+        const user = await User.findOne({studentid});
         
         if(!user){
-            return res.status(400).json({msg:"User with this email does not exist!"});
+            return res.status(400).json({msg:"User with this studentid does not exist!"});
         }
 
         const isMatch = await bcrypt.compare(password,user.password);
