@@ -39,5 +39,5 @@ app.use(authroute);
 // app.use(errorHandler);
 
 app.listen( process.env.PORT || 4444 , () => {
-    console.log("Server is rocking at 4003");
+    console.log("Server is rocking at 4444");
 })

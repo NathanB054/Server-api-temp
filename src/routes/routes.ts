@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { Todo } from "../models/user_model"; // Assuming "user_model" is your file with the Todo model
+import Activity from "../models/activity_model";
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.post("/add", async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Title and description are required." });
     }
     // Create a new Todo instance using the validated data
-    const newTodo = new Todo({ title, description });
+    const newTodo = new Todo({ title, description  });
     // Save the new Todo to the database
     await newTodo.save();
     // Respond with success and the created Todo
@@ -23,6 +24,26 @@ router.post("/add", async (req: Request, res: Response) => {
     return res.status(500).json({ error: "Internal server error." }); // Handle errors gracefully
   }
 });
+
+// Post request to add a Activity
+router.post("/activity", async (req: Request, res: Response) => {
+  try {
+    // Validate incoming data (optional but recommended)
+    const { studentid, location, marker, time } = req.body; // Destructure body properties
+    // Create a new Todo instance using the validated data
+    const newActivity = new Activity({ studentid, location, marker, time });
+    // Save the new Todo to the database
+    await newActivity.save();
+    // Respond with success and the created Todo
+    return res.status(201).json({ data: newActivity }); // Use status 201 for created entities
+  } catch (error) {
+    console.error("Error adding Activity:", error);
+    return res.status(500).json({ error: "Internal server error." }); // Handle errors gracefully
+  }
+});
+
+
+
 
 
 //Get request
