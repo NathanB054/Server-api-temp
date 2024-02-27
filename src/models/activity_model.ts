@@ -5,6 +5,7 @@ interface activities {
     location: string;
     marker: string;
     time: string;
+    route: string;
   }
 
 const activitySchema = new mongoose.Schema(
@@ -13,6 +14,7 @@ const activitySchema = new mongoose.Schema(
       location: { type: String, required: true },
       marker: { type: String, required: true },
       time: { type: String, required: false },
+      route: { type: String, required: true },
     },
     { collection: "activities" }
   );
@@ -22,6 +24,7 @@ const activitySchema = new mongoose.Schema(
     location: string;
     marker: string;
     time: string;
+    route: string;
     set(x: activities): this; // Define `set` as an instance method
   }
 
@@ -33,6 +36,7 @@ Activity.prototype.set = function (x: activities) {
     this.location = x.location;
     this.marker = x.marker;
     this.time = x.time;
+    this.route = x.route;
     return this.save(); // Save the document to the database
   };
 
